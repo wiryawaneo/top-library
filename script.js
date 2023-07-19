@@ -1,19 +1,28 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read ) {
-    this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.read = read,
-    this.info = function() {
-        console.log(`${title} by ${author}, ${pages} pages, ${read}`) 
-    }
+//set book object
+function Book(title, author, pages, read) {
+  (this.title = title),
+    (this.author = author),
+    (this.pages = pages),
+    (this.read = read);
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295', 'read');
+//book function
+Book.prototype.info = function () {
+  console.log(
+    `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
+  );
+};
 
-theHobbit.info()
+const theHobbit = new Book("The Hobbit", "J.R.R Tolkien", "295", "read");
 
-function addBookToLibrary() {
-  // do stuff here
+theHobbit.info();
+
+function addBookToLibrary(title, author, pages, read) {
+  const book = new Book(title, author, pages, read);
+  myLibrary.push(book);
+
+  // myLibrary.push(title);
+  // console.log(myLibrary)
 }
