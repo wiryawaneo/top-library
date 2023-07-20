@@ -28,13 +28,22 @@ function addBookToLibrary(title, author, pages, read) {
   console.log(myLibrary);
 }
 
+showLibraryCards();
+
 //check whether there are any book input
 //maybe change this into a function so it can run whenever a book is added and stuff
-if (myLibrary.length === 0) {
-  console.log("empty library");
-  console.log(myLibrary.length);
-}
+function showLibraryCards() {
+  if (myLibrary.length === 0) {
+    console.log("empty library");
+    console.log(myLibrary.length);
+  }
 
-if (myLibrary.length != 0) {
-  console.log("library");
+  if (myLibrary.length != 0) {
+    console.log("library");
+    //get card section
+    const cards = document.getElementsByClassName("library-cards");
+    const card = document.createElement("div");
+    card.classList.add("card");
+    cards[0].appendChild(card);
+  }
 }
