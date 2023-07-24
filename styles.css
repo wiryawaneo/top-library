@@ -83,7 +83,8 @@ button {
   cursor: pointer; /* Add a pointer on hover */
 }
 
-.addBookSection {
+#addBookModal {
+  cursor: default;
   height: 60%;
   width: 40%;
   position: fixed;

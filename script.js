@@ -66,13 +66,20 @@ const createLibraryCard = (book) => {
 //Onclick for add button
 const addBookBtn = document.querySelector(".library-button button");
 const overlay = document.querySelector(".overlay");
+const addBookModal = document.getElementById("addBookModal");
+
 // when user call the modal
 addBookBtn.onclick = () => {
   overlay.style.display = "block";
 };
 // when user close modal
 overlay.onclick = () => {
-  //   overlay.style.display = "none";
+  overlay.style.display = "none";
+};
+
+//prevent modal from closing when user click on it
+addBookModal.onclick = (e) => {
+  e.stopPropagation();
 };
 
 //get book input
