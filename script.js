@@ -107,3 +107,9 @@ submitBook.onclick = (e) => {
 
 //forEach to create a library card for each book in myLibrary array
 myLibrary.forEach(createLibraryCard);
+
+//add deletion confirmation (overlay)
+//add about overlay
+//style everything else
+//prevent repeated book?
+//change read status (add a function to the class?)
