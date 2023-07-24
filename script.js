@@ -29,13 +29,20 @@ class addBookToLibrary {
   constructor(title, author, pages, read) {
     const book = new Book(title, author, pages, read);
     myLibrary.push(book);
-    // myLibrary.push(title);
   }
 }
 
+//Function to delete html and book from myLibrary array
+const deleteBook = (e) => {
+  console.log(e.target.parentNode.firstChild.innerHTML);
+  e.target.parentNode.remove();
+  myLibrary = myLibrary.filter((book) => {
+    return book.title !== e.target.parentNode.firstChild.innerHTML;
+  });
+};
+
 //create each library card
 const createLibraryCard = (book) => {
-  console.log(book);
   const cards = document.getElementsByClassName("library-cards");
   const card = document.createElement("div");
   const cardTitle = document.createElement("div");
@@ -44,12 +51,28 @@ const createLibraryCard = (book) => {
   card.classList.add("card");
   cardDelete.classList.add("card-delete");
 
+  cardDelete.onclick = (e) => {
+    deleteBook(e);
+  };
+
   cardDelete.innerHTML = "Delete";
   cardTitle.innerHTML = book.title;
 
-  card.appendChild(cardDelete);
   card.appendChild(cardTitle);
+  card.appendChild(cardDelete);
   cards[0].appendChild(card);
+};
+
+//Onclick for add button
+const addBookBtn = document.querySelector(".library-button button");
+const overlay = document.querySelector(".overlay");
+// when user call the modal
+addBookBtn.onclick = () => {
+  overlay.style.display = "block";
+};
+// when user close modal
+overlay.onclick = () => {
+  overlay.style.display = "none";
 };
 
 //forEach to create a library card for each book in myLibrary array
