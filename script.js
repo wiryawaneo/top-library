@@ -17,6 +17,7 @@ Book.prototype.info = function () {
   );
 };
 
+//preset books
 const theHobbit = new Book("The Hobbit", "J.R.R Tolkien", "295", "read");
 const harryPotter = new Book("Harry Potter", "J.R.R Tolkien", "295", "read");
 
@@ -34,7 +35,6 @@ class addBookToLibrary {
 
 //Function to delete html and book from myLibrary array
 const deleteBook = (e) => {
-  console.log(e.target.parentNode.firstChild.innerHTML);
   e.target.parentNode.remove();
   myLibrary = myLibrary.filter((book) => {
     return book.title !== e.target.parentNode.firstChild.innerHTML;
@@ -72,7 +72,30 @@ addBookBtn.onclick = () => {
 };
 // when user close modal
 overlay.onclick = () => {
+  //   overlay.style.display = "none";
+};
+
+//get book input
+const addBookForm = document.getElementById("addBookForm");
+const submitBook = document.getElementById("submitBook");
+const formTitle = document.getElementById("title");
+const formAuthor = document.getElementById("author");
+const formPages = document.getElementById("pages");
+const formRead = document.getElementById("read");
+submitBook.onclick = (e) => {
+  e.preventDefault();
+
+  const newBook = new Book(
+    formTitle.value,
+    formAuthor.value,
+    formPages.value,
+    formRead.value
+  );
+
+  myLibrary.push(newBook);
+  createLibraryCard(newBook);
   overlay.style.display = "none";
+  addBookForm.reset();
 };
 
 //forEach to create a library card for each book in myLibrary array

@@ -21,8 +21,36 @@
     </section>
     <overlay class="overlay">
       <div class="addBookSection">
-        <div class="addBookTitle"><p>Add a Book</p></div>
-        <form class="addBookForm"></form>
+        <form id="addBookForm">
+          <p>Add a Book</p>
+          <input
+            class="input"
+            type="text"
+            id="title"
+            placeholder="Title"
+            required
+            maxlength="100"
+          />
+          <input
+            class="input"
+            type="text"
+            id="author"
+            placeholder="Book Author"
+            required
+            maxlength="100"
+          />
+          <input
+            class="input"
+            type="number"
+            id="pages"
+            placeholder="Number of Pages"
+            required
+            maxlength="100"
+          />
+          <input class="input" type="checkbox" id="read" name="read" />
+          <label for="read"> I have read this book</label>
+          <button id="submitBook">Add Book</button>
+        </form>
       </div>
     </overlay>
   </body>
