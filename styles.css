@@ -56,9 +56,11 @@ button {
   color: white;
 }
 
-/* .library > * {
-  border: 1px solid red;
-} */
+.library > .library-content > .library-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:20px;
+}
 
 .library > .library-content > .library-cards > .card {
     height:100px;
