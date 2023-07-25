@@ -35,15 +35,23 @@ class addBookToLibrary {
 
 //Function to delete html and book from myLibrary array
 const deleteBook = (e) => {
+  //updates visually
   e.target.parentNode.remove();
+  //update array
   myLibrary = myLibrary.filter((book) => {
     return book.title !== e.target.parentNode.firstChild.innerHTML;
   });
 };
 
 const changeReadStatus = (e) => {
+  //updates visually
   const updateReadStatus = e.target.innerHTML === "read" ? "unread" : "read";
   e.target.innerHTML = updateReadStatus;
+  //update array
+  const changedBook = myLibrary.findIndex(
+    (book) => book.title == e.target.parentNode.firstChild.innerHTML
+  );
+  myLibrary[changedBook].read = updateReadStatus;
 };
 
 //create each library card
@@ -67,8 +75,8 @@ const createLibraryCard = (book) => {
   };
 
   cardDelete.innerHTML = "Delete";
-  cardTitle.innerHTML =
-    book.title + "</br>" + book.author + "</br>" + book.pages;
+  cardTitle.innerHTML = book.title;
+  //  + "</br>" + book.author + "</br>" + book.pages;
   cardRead.innerHTML = book.read;
 
   card.appendChild(cardTitle);
@@ -128,4 +136,3 @@ myLibrary.forEach(createLibraryCard);
 //add about overlay
 //style everything else
 //prevent repeated book?
-//change read status (add a function to the class?)
