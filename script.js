@@ -41,24 +41,38 @@ const deleteBook = (e) => {
   });
 };
 
+const changeReadStatus = (e) => {
+  const updateReadStatus = e.target.innerHTML === "read" ? "unread" : "read";
+  e.target.innerHTML = updateReadStatus;
+};
+
 //create each library card
 const createLibraryCard = (book) => {
   const cards = document.getElementsByClassName("library-cards");
   const card = document.createElement("div");
   const cardTitle = document.createElement("div");
   const cardDelete = document.createElement("button");
+  const cardRead = document.createElement("button");
 
   card.classList.add("card");
   cardDelete.classList.add("card-delete");
+  cardRead.classList.add("card-read");
 
   cardDelete.onclick = (e) => {
     deleteBook(e);
   };
 
+  cardRead.onclick = (e) => {
+    changeReadStatus(e);
+  };
+
   cardDelete.innerHTML = "Delete";
-  cardTitle.innerHTML = book.title;
+  cardTitle.innerHTML =
+    book.title + "</br>" + book.author + "</br>" + book.pages;
+  cardRead.innerHTML = book.read;
 
   card.appendChild(cardTitle);
+  card.appendChild(cardRead);
   card.appendChild(cardDelete);
   cards[0].appendChild(card);
 };
@@ -92,11 +106,13 @@ const formRead = document.getElementById("read");
 submitBook.onclick = (e) => {
   e.preventDefault();
 
+  const readStatus = formRead.checked ? "read" : "unread";
+
   const newBook = new Book(
     formTitle.value,
     formAuthor.value,
     formPages.value,
-    formRead.value
+    readStatus
   );
 
   myLibrary.push(newBook);
