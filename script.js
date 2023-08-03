@@ -33,6 +33,23 @@ class addBookToLibrary {
   }
 }
 
+const deleteOverlay = document.querySelector(".deleteOverlay");
+const deleteConfirm = document.querySelector("#confirmDelete");
+const cancelDelete = document.querySelector("#cancelDelete");
+
+const confirmDelete = () => {
+  deleteOverlay.style.display = "block";
+};
+
+//close overlay when clicked
+deleteOverlay.onclick = () => {
+  deleteOverlay.style.display = "none";
+};
+
+cancelDelete.onclick = () => {
+  deleteOverlay.style.display = "none";
+};
+
 //Function to delete html and book from myLibrary array
 const deleteBook = (e) => {
   //updates visually
@@ -41,6 +58,12 @@ const deleteBook = (e) => {
   myLibrary = myLibrary.filter((book) => {
     return book.title !== e.target.parentNode.firstChild.innerHTML;
   });
+};
+
+//on confirm delete click, delete book
+deleteConfirm.onclick = () => {
+  // console.log();
+  deleteBook();
 };
 
 const changeReadStatus = (e) => {
@@ -67,7 +90,8 @@ const createLibraryCard = (book) => {
   cardRead.classList.add("card-read");
 
   cardDelete.onclick = (e) => {
-    deleteBook(e);
+    console.log(e.target.parentNode.firstChild.innerHTML)
+    confirmDelete(e.target.parentNode.firstChild.innerHTML);
   };
 
   cardRead.onclick = (e) => {
