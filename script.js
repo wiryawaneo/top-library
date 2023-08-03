@@ -34,6 +34,7 @@ class addBookToLibrary {
 }
 
 const deleteOverlay = document.querySelector(".deleteOverlay");
+const deleteModal = document.querySelector("#deleteModal");
 const deleteConfirm = document.querySelector("#confirmDelete");
 const cancelDelete = document.querySelector("#cancelDelete");
 
@@ -49,6 +50,10 @@ deleteOverlay.onclick = () => {
 cancelDelete.onclick = () => {
   deleteOverlay.style.display = "none";
 };
+
+deleteModal.onclick = (e) => {
+  e.stopPropagation();
+}
 
 //Function to delete html and book from myLibrary array
 const deleteBook = (currentCard) => {
