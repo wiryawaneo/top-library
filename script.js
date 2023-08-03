@@ -53,7 +53,7 @@ cancelDelete.onclick = () => {
 
 deleteModal.onclick = (e) => {
   e.stopPropagation();
-}
+};
 
 //Function to delete html and book from myLibrary array
 const deleteBook = (currentCard) => {
@@ -63,6 +63,7 @@ const deleteBook = (currentCard) => {
   myLibrary = myLibrary.filter((book) => {
     return book.title !== currentCard.firstChild.innerHTML;
   });
+  deleteOverlay.style.display = "none";
 };
 
 let deletingCard = "";
@@ -162,6 +163,15 @@ submitBook.onclick = (e) => {
     createLibraryCard(newBook);
     overlay.style.display = "none";
     addBookForm.reset();
+  }
+  if (formTitle.value === "") {
+    console.log("title empty");
+  }
+  if (formAuthor.value === "") {
+    console.log("author empty");
+  }
+  if (formPages.value === "") {
+    console.log("page empty");
   }
 };
 
