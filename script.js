@@ -139,19 +139,25 @@ const formRead = document.getElementById("read");
 submitBook.onclick = (e) => {
   e.preventDefault();
 
-  const readStatus = formRead.checked ? "read" : "unread";
+  if (
+    formTitle.value !== "" &&
+    formAuthor.value !== "" &&
+    formPages.value !== ""
+  ) {
+    const readStatus = formRead.checked ? "read" : "unread";
 
-  const newBook = new Book(
-    formTitle.value,
-    formAuthor.value,
-    formPages.value,
-    readStatus
-  );
+    const newBook = new Book(
+      formTitle.value,
+      formAuthor.value,
+      formPages.value,
+      readStatus
+    );
 
-  myLibrary.push(newBook);
-  createLibraryCard(newBook);
-  overlay.style.display = "none";
-  addBookForm.reset();
+    myLibrary.push(newBook);
+    createLibraryCard(newBook);
+    overlay.style.display = "none";
+    addBookForm.reset();
+  }
 };
 
 //forEach to create a library card for each book in myLibrary array
