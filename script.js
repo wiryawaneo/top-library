@@ -51,19 +51,20 @@ cancelDelete.onclick = () => {
 };
 
 //Function to delete html and book from myLibrary array
-const deleteBook = (e) => {
+const deleteBook = (currentCard) => {
   //updates visually
-  e.target.parentNode.remove();
+  currentCard.remove();
   //update array
   myLibrary = myLibrary.filter((book) => {
-    return book.title !== e.target.parentNode.firstChild.innerHTML;
+    return book.title !== currentCard.firstChild.innerHTML;
   });
 };
 
+let deletingCard = "";
+
 //on confirm delete click, delete book
 deleteConfirm.onclick = () => {
-  // console.log();
-  deleteBook();
+  deleteBook(deletingCard);
 };
 
 const changeReadStatus = (e) => {
@@ -90,8 +91,8 @@ const createLibraryCard = (book) => {
   cardRead.classList.add("card-read");
 
   cardDelete.onclick = (e) => {
-    console.log(e.target.parentNode.firstChild.innerHTML)
-    confirmDelete(e.target.parentNode.firstChild.innerHTML);
+    deletingCard = e.target.parentNode;
+    confirmDelete();
   };
 
   cardRead.onclick = (e) => {
