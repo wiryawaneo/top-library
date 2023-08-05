@@ -67,7 +67,7 @@ button {
 }
 
 .library > .library-content > .library-cards > .card {
-  margin-top:24px;
+  margin-top: 24px;
   width: 100px;
   border: 3px solid rgba(84, 84, 84, 0.8);
   border-radius: 8px;
@@ -81,15 +81,15 @@ button {
 }
 
 .cardRead-button {
-  background-color:rgb(11, 112, 11);
-  border:none;
+  background-color: rgb(11, 112, 11);
+  border: none;
   border-radius: 4px;
-  padding:10px 50px;
-  color:rgb(236, 236, 236);
+  padding: 10px 50px;
+  color: rgb(236, 236, 236);
 }
 
-.cardRead-button.active{
-  background-color:red;
+.cardRead-button.active {
+  background-color: red;
 }
 
 /* add book to library button */
@@ -142,6 +142,16 @@ button {
 #addBookForm > h2 {
   font-size: 1.4rem;
   font-weight: 600;
+}
+
+#addBookForm > input {
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+#addBookForm > input.active {
+  border: 1px solid red;
+  border-radius: 2px;
 }
 
 #deleteModal {

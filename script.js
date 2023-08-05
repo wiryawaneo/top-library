@@ -87,10 +87,10 @@ const changeReadStatus = (e) => {
   let currentStatus;
   if (updateReadStatus === "Reading Completed") {
     currentStatus = "read";
-    e.target.classList.remove("active")
+    e.target.classList.remove("active");
   } else {
     currentStatus = "unread";
-    e.target.classList.add("active")
+    e.target.classList.add("active");
   }
   myLibrary[changedBook].read = currentStatus;
 };
@@ -109,7 +109,7 @@ const createLibraryCard = (book) => {
   card.classList.add("card");
   cardDelete.classList.add("card-delete");
   bookInfo.classList.add("card-bookInfo");
-  cardRead.classList.add("cardRead-button")
+  cardRead.classList.add("cardRead-button");
 
   cardDelete.onclick = (e) => {
     deletingCard = e.target.parentNode;
@@ -129,7 +129,8 @@ const createLibraryCard = (book) => {
     cardRead.classList.add("card-read");
   } else {
     cardRead.innerHTML = "Reading not Complete";
-    cardRead.classList.add("card-read .active");
+    cardRead.classList.add("card-read");
+    cardRead.classList.add("active");
   }
 
   bookInfo.appendChild(cardTitle);
@@ -191,13 +192,19 @@ submitBook.onclick = (e) => {
     addBookForm.reset();
   }
   if (formTitle.value === "") {
-    console.log("title empty");
+    formTitle.classList.add("active");
+  } else {
+    formTitle.classList.remove("active");
   }
   if (formAuthor.value === "") {
-    console.log("author empty");
+    formAuthor.classList.add("active");
+  } else {
+    formTitle.classList.remove("active");
   }
   if (formPages.value === "") {
-    console.log("page empty");
+    formPages.classList.add("active");
+  } else {
+    formPages.classList.remove("active");
   }
 };
 
