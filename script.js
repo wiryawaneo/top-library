@@ -74,8 +74,6 @@ deleteConfirm.onclick = () => {
 };
 
 const changeReadStatus = (e) => {
-  const cardRead = document.querySelector(".cardRead-button")
-  console.log(cardRead)
   //updates visually
   const updateReadStatus =
     e.target.innerHTML === "Reading Completed"
@@ -89,10 +87,10 @@ const changeReadStatus = (e) => {
   let currentStatus;
   if (updateReadStatus === "Reading Completed") {
     currentStatus = "read";
-    cardRead.classList.remove("active")
+    e.target.classList.remove("active")
   } else {
     currentStatus = "unread";
-    cardRead.classList.add("active")
+    e.target.classList.add("active")
   }
   myLibrary[changedBook].read = currentStatus;
 };
