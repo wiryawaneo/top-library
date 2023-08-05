@@ -67,11 +67,29 @@ button {
 }
 
 .library > .library-content > .library-cards > .card {
-  height: 100px;
+  margin-top:24px;
   width: 100px;
-  border: 5px solid black;
+  border: 3px solid rgba(84, 84, 84, 0.8);
   border-radius: 8px;
-  padding: 24px;
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.cardRead-button {
+  background-color:rgb(11, 112, 11);
+  border:none;
+  border-radius: 4px;
+  padding:10px 50px;
+  color:rgb(236, 236, 236);
+}
+
+.cardRead-button.active{
+  background-color:red;
 }
 
 /* add book to library button */
@@ -92,14 +110,23 @@ button {
 
 #addBookModal {
   cursor: default;
-  height: 60%;
-  width: 40%;
+  padding: 30px 50px;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background: rgb(192, 159, 118);
+  background: rgb(245, 245, 245);
   border-radius: 8px;
+}
+
+#submitBook {
+  padding: 20px 60px;
+  margin: 0 50px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(192, 159, 118);
+  color: white;
+  bottom: 0;
 }
 
 #addBookForm,
@@ -112,14 +139,18 @@ button {
   text-align: center;
 }
 
+#addBookForm > h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
 #deleteModal {
   cursor: default;
-  height: 20%;
-  width: 40%;
+  padding: 30px 50px;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background: rgb(192, 159, 118);
+  background: rgb(245, 245, 245);
   border-radius: 8px;
 }

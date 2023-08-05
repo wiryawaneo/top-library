@@ -61,7 +61,7 @@ const deleteBook = (currentCard) => {
   currentCard.remove();
   //update array
   myLibrary = myLibrary.filter((book) => {
-    return book.title !== currentCard.firstChild.innerHTML;
+    return book.title !== currentCard.firstChild.firstChild.innerHTML;
   });
   deleteOverlay.style.display = "none";
 };
@@ -74,27 +74,44 @@ deleteConfirm.onclick = () => {
 };
 
 const changeReadStatus = (e) => {
+  const cardRead = document.querySelector(".cardRead-button")
+  console.log(cardRead)
   //updates visually
-  const updateReadStatus = e.target.innerHTML === "read" ? "unread" : "read";
+  const updateReadStatus =
+    e.target.innerHTML === "Reading Completed"
+      ? "Reading not Completed"
+      : "Reading Completed";
   e.target.innerHTML = updateReadStatus;
   //update array
   const changedBook = myLibrary.findIndex(
-    (book) => book.title == e.target.parentNode.firstChild.innerHTML
+    (book) => book.title == e.target.parentNode.firstChild.firstChild.innerHTML
   );
-  myLibrary[changedBook].read = updateReadStatus;
+  let currentStatus;
+  if (updateReadStatus === "Reading Completed") {
+    currentStatus = "read";
+    cardRead.classList.remove("active")
+  } else {
+    currentStatus = "unread";
+    cardRead.classList.add("active")
+  }
+  myLibrary[changedBook].read = currentStatus;
 };
 
 //create each library card
 const createLibraryCard = (book) => {
   const cards = document.getElementsByClassName("library-cards");
   const card = document.createElement("div");
-  const cardTitle = document.createElement("div");
+  const bookInfo = document.createElement("div");
+  const cardTitle = document.createElement("p");
+  const cardAuthor = document.createElement("p");
+  const cardPages = document.createElement("p");
   const cardDelete = document.createElement("button");
   const cardRead = document.createElement("button");
 
   card.classList.add("card");
   cardDelete.classList.add("card-delete");
-  cardRead.classList.add("card-read");
+  bookInfo.classList.add("card-bookInfo");
+  cardRead.classList.add("cardRead-button")
 
   cardDelete.onclick = (e) => {
     deletingCard = e.target.parentNode;
@@ -107,10 +124,21 @@ const createLibraryCard = (book) => {
 
   cardDelete.innerHTML = "Delete";
   cardTitle.innerHTML = book.title;
-  //  + "</br>" + book.author + "</br>" + book.pages;
-  cardRead.innerHTML = book.read;
+  cardAuthor.innerHTML = book.author;
+  cardPages.innerHTML = book.pages + " pages";
+  if (book.read === "read") {
+    cardRead.innerHTML = "Reading Completed";
+    cardRead.classList.add("card-read");
+  } else {
+    cardRead.innerHTML = "Reading not Complete";
+    cardRead.classList.add("card-read .active");
+  }
 
-  card.appendChild(cardTitle);
+  bookInfo.appendChild(cardTitle);
+  bookInfo.appendChild(cardAuthor);
+  bookInfo.appendChild(cardPages);
+
+  card.appendChild(bookInfo);
   card.appendChild(cardRead);
   card.appendChild(cardDelete);
   cards[0].appendChild(card);

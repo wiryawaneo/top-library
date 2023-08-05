@@ -22,7 +22,7 @@
     <overlay class="overlay">
       <div id="addBookModal">
         <form id="addBookForm">
-          <p>Add a Book</p>
+          <h2>Add a Book</h2>
           <input
             class="input"
             type="text"
@@ -47,8 +47,10 @@
             required
             maxlength="100"
           />
-          <input class="input" type="checkbox" id="read" name="read" />
-          <label for="read"> I have read this book</label>
+          <div class="readCheckbox">
+            <input class="input" type="checkbox" id="read" name="read" />
+            <label for="read"> I have read this book</label>
+          </div>
           <button id="submitBook">Add Book</button>
         </form>
       </div>
